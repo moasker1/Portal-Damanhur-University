@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News and Events Section</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+
+    .news-section {
+      width: 90%;
+      max-width: 1200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .news-card {
+      min-width: 33.333%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 0 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 20px;
+    }
+
+    .news-date {
+      background-color: #0056d2;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .news-description {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      display: inline-block;
+      background-color: #f57224;
+      color: white;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin: 0 8px;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #0056d2;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const carousel = document.querySelector('.carousel');
+      const dots = document.querySelectorAll('.dot');
+      let currentIndex = 0;
+
+      function updateCarousel(index) {
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel(currentIndex);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <section class="news-section">
+    <h2 class="section-title">الأخبار والأحداث الكليات</h2>
+
+    <div class="carousel">
+      <div class="news-card">
+        <img src="https://via.placeholder.com/400x200" alt="Event 1">
+        <div class="news-content">
+          <div class="news-date">05 OCT</div>
+          <h3 class="news-title">إفطار الأسرة المصرية</h3>
+          <p class="news-description">جامعة منصورة تشارك في إفطار الأسرة المصرية لعام 2024</p>
+          <a href="#" class="read-more">المزيد</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <img src="https://via.placeholder.com/400x200" alt="Event 2">
+        <div class="news-content">
+          <div class="news-date">08 OCT</div>
+          <h3 class="news-title">دورة تدريبية</h3>
+          <p class="news-description">إطلاق دورة تدريبية لطلاب كلية الحاسبات والمعلومات</p>
+          <a href="#" class="read-more">المزيد</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <img src="https://via.placeholder.com/400x200" alt="Event 3">
+        <div class="news-content">
+          <div class="news-date">02 SEP</div>
+          <h3 class="news-title">برنامج بحث علمي</h3>
+          <p class="news-description">كلية العلوم تقدم برنامجا جديدا للبحث العلمي</p>
+          <a href="#" class="read-more">المزيد</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+</body>
+</html>
